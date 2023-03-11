@@ -10,6 +10,15 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven {
+            allowInsecureProtocol = true
+            url uri("http://plat-client-maven.mihoyo.com:9098/repository/plat-maven/")
+        }
+        maven {
+            allowInsecureProtocol = true
+            url uri("http://it-master-intranet-nexus.mihoyo.com/repository/mhyAndroid-group/")
+        }
     }
 }
 rootProject.name = "My Application"

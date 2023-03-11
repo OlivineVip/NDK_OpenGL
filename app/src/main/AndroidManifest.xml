@@ -12,9 +12,11 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".activity.EglShape3Activity"
+            android:exported="false" />
+        <activity
             android:name=".activity.EglShapeActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
