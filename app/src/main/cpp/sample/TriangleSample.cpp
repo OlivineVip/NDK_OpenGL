@@ -43,7 +43,7 @@ void TriangleSample::Draw(int with, int height) {
         return;
 
     glClear(GL_STENCIL_BUFFER_BIT | GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glClearColor(1.0, 1.0, 1.0, 1.0);
+    glClearColor(0.0, 1.0, 1.0, 1.0);
 
     // Use the program object
     glUseProgram(m_ProgramObj);

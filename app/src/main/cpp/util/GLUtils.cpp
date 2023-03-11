@@ -11,11 +11,15 @@
 GLint GLUtils::LoadShader(GLenum shaderType, const char *pSource) {
     GLuint shader = 0;
     FUN_BEGIN_TIME("GLUtils::LoadShader")
+        //创建一个新shader
         shader = glCreateShader(shaderType);
         if (shader) {
+            //加载shader的源代码
             glShaderSource(shader, 1, &pSource, NULL);
+            //编译shader
             glCompileShader(shader);
             GLint compiled = 0;
+            //获取Shader的编译情况
             glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
             if (!compiled) {
                 GLint infoLen = 0;
@@ -40,30 +44,41 @@ GLuint
 GLUtils::CreateProgram(const char *pVertexShaderSource, const char *pFragShaderSource, GLuint &vertexShaderHandle,
                        GLuint &fragShaderHandle) {
     GLuint program = 0;
+
+    //加载顶点着色器
     vertexShaderHandle = LoadShader(GL_VERTEX_SHADER, pVertexShaderSource);
     if (!vertexShaderHandle) {
         return program;
     }
+
+    //加载片元着色器
     fragShaderHandle = LoadShader(GL_FRAGMENT_SHADER, pFragShaderSource);
     if (!fragShaderHandle) {
         return program;
     }
 
+    //创建程序
     program = glCreateProgram();
     if (program) {
+        //向程序中加入顶点着色器
         glAttachShader(program, vertexShaderHandle);
         CheckGLError("glAttachShader");
+        //向程序中加入片元着色器
         glAttachShader(program, fragShaderHandle);
         CheckGLError("glAttachShader");
+        //链接程序
         glLinkProgram(program);
 
+        //获取program的链接情况
         GLint linkStatus = GL_FALSE;
         glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
 
+        //分离&删除着色器
         glDetachShader(program, vertexShaderHandle);
         glDeleteShader(vertexShaderHandle);
         vertexShaderHandle = 0;
 
+        //分离&删除着色器
         glDetachShader(program, fragShaderHandle);
         glDeleteShader(fragShaderHandle);
         fragShaderHandle = 0;
