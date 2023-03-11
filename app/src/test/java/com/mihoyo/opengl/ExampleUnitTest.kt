@@ -1,4 +1,4 @@
-package com.mihoyo.myapplication
+package com.mihoyo.opengl
 
 import org.junit.Test
 

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.mihoyo.myapplication'
+    namespace 'com.mihoyo.opengl'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.mihoyo.myapplication"
+        applicationId "com.mihoyo.opengl"
         minSdk 24
         targetSdk 33
         versionCode 1
